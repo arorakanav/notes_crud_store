@@ -1,0 +1,29 @@
+<div class="note-creator shadow-2">
+      <form class="row" (submit)="onCreateNote()" >
+        <!--<input
+          type="text"
+          [(ngModel)]="newNote.title"
+          name="newNoteTitle"
+          placeholder="Title"
+          class="col-xs-10 title"
+        >!-->
+        <md-input-container>
+          <input mdInput placeholder="Title" name="newNoteTitle" [(ngModel)]="newNote.title">
+        </md-input-container>
+        <md-input-container >
+          <input mdInput placeholder="Take a note..." name="newNoteValue" [(ngModel)]="newNote.value" >
+        </md-input-container>
+        <!--<input
+          type="text"
+          [(ngModel)]="newNote.value"
+          name="newNoteValue"
+          placeholder="Take a note..."
+          class="col-xs-10"
+        >!-->
+        <div class="actions col-xs-12 row between-xs">
+          <button md-raised-button type="submit">
+            Done
+          </button>
+        </div>
+      </form>
+    </div>
