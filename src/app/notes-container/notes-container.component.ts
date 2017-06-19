@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { Store } from '@ngrx/store';
+import {ADD_NOTE,DELETE_NOTE} from '../state-management/reducers/notes.reducer'
 
 @Component({
   selector: 'app-notes-container',
@@ -7,22 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotesContainerComponent implements OnInit {
 
-  notes = [{title:'this is a note', value:'eat some food', color:'lightblue'},
-  {title:'this is a note2', value:'eat some food', color:'red'},
-  {title:'this is a note3', value:'eat some food', color:'yellow'},
-  {title:'this is a note3', value:'eat some food', color:'yellow'}
-  ]
+  notes: Observable<any>;
+  title: string;
+  value: any;
 
   onNoteChecked(i : number){
-    this.notes.splice(i,1);
+    this.store.dispatch({ type: DELETE_NOTE, payload: i });;
   }
   onCreateNote(note){
-    this.notes.push(note)
+    this.store.dispatch({ type: ADD_NOTE, payload: { note, done: false } } );
+
 
   }
-  constructor() { }
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
+    this.notes = this.store.select('notesReducer');
   }
 
 }

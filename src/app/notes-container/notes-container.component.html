@@ -4,11 +4,11 @@
 
         </app-note-creator>
       </div>
-      <div class="notes ">
+      <div class="notes">
         <div class="">
           <app-note-card
             [note]="note"
-            *ngFor="let note of notes; let i = index"
+            *ngFor="let note of notes | async; let i = index"
             (checked)="onNoteChecked(i)"
           >
           </app-note-card>
