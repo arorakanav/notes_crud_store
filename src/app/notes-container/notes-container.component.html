@@ -5,14 +5,24 @@
         </app-note-creator>
       </div>
       <div class="notes">
-        <div class="">
+        <div class="" *ngIf="!isedit">
           <app-note-card
             [note]="note"
             *ngFor="let note of notes | async; let i = index"
             (checked)="onNoteChecked(i)"
+            (update)="onedit($event)"
           >
           </app-note-card>
+
         </div>
+      <div *ngIf="isedit" >
+        <app-notes-updater
+        [id]="noteedit.id"
+        >
+
+        </app-notes-updater>
+
+      </div>
       </div>
     </div>
 

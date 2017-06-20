@@ -4,6 +4,9 @@ import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { MaterialModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
+import { HttpModule } from '@angular/http'
+import { FlexLayoutModule } from "@angular/flex-layout";
+
 
 import { AppComponent } from './app.component';
 import { ContainerComponent } from './container/container.component';
@@ -12,6 +15,11 @@ import { NoteCardComponent } from './note-card/note-card.component';
 import { NotesContainerComponent } from './notes-container/notes-container.component';
 import { NoteCreatorComponent } from './note-creator/note-creator.component';
 import { notesReducer } from './state-management/reducers/notes.reducer'
+import {routes} from './routes.routing';
+import { NotesUpdaterComponent } from './notes-updater/notes-updater.component';
+
+
+
 
 
 
@@ -23,6 +31,8 @@ import { notesReducer } from './state-management/reducers/notes.reducer'
     NoteCardComponent,
     NotesContainerComponent,
     NoteCreatorComponent,
+    NotesUpdaterComponent,
+
 
   ],
   imports: [
@@ -30,7 +40,10 @@ import { notesReducer } from './state-management/reducers/notes.reducer'
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    StoreModule.provideStore({notesReducer})
+    StoreModule.provideStore({notesReducer}),
+    HttpModule,
+    routes,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

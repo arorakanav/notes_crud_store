@@ -1,4 +1,4 @@
-<div class="card" (mouseleave)="toggleCheck()" (mouseenter)="toggleCheck()">
+<div class="card" (mouseleave)="toggleCheck()" (mouseenter)="toggleCheck()"(click)="onUpdate(note.id)">
 <div class="icon-div">
   <button md-mini-fab class="icon-button" (click)="onChecked()" *ngIf="showCheck" ><md-icon class="icon" >check</md-icon></button>
 </div>
@@ -8,8 +8,8 @@
     <md-card-header>
       <md-card-title class="title" >{{note.title}}</md-card-title>
     </md-card-header>
-    <md-card-content >
-      <p class="value" >
+    <md-card-content>
+      <p class="value">
         {{note.value}}
       </p>
     </md-card-content>
