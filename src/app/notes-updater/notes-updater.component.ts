@@ -21,7 +21,6 @@ export class NotesUpdaterComponent implements OnInit {
   }
 
   onUpdate(note){
-    console.log(note);
         this.store.dispatch({ type:UPDATE_NOTE , payload: {title: note.title, value: note.value, id: this.id}   } );
         this.location.back();
 
@@ -29,10 +28,6 @@ export class NotesUpdaterComponent implements OnInit {
 
   ngOnInit() {
     this.note_edit=this.store.select('notesReducer');
-    //.forEach((notes)=>{
-
-      //console.log(notes[0].id)
-    //})
   }
 
 }

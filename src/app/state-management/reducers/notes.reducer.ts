@@ -9,13 +9,13 @@ export const UPDATE_NOTE ='UPDATE_NOTE';
 export function notesReducer(state = [],action : Action){
   switch(action.type){
     case ADD_NOTE:
-      return [action.payload, ...state];
+      return [ ...state,action.payload];
     case DELETE_NOTE:
       return state.filter((item, index) => index !== action.payload);
     case UPDATE_NOTE:
       return state.map((item, index) => {
-        return index === action.payload.index
-          ? Object.assign({}, item, { value: action.payload.newValue })
+          return index === action.payload.id
+          ? Object.assign({}, item, [ action.payload ])
           : item;
       });
     default:

@@ -1,24 +1,15 @@
-<div *ngFor="let note of note_edit | async" class="container"
-     fxLayout
-     fxLayout.xs="column"
+<div *ngFor="let note of note_edit | async;" class="container"
      fxLayoutAlign="center"
      fxLayoutGap="10px"
      fxLayoutGap.xs="0">
   <div *ngIf="note.id==id" >
-    <div>
-
-
-<md-input-container >
+<md-input-container>
   <input mdInput placeholder="Title" [(ngModel)]="note.title" >
 </md-input-container>
-</div>
 <div>
-
-
 <md-input-container >
   <input mdInput placeholder="Value" [(ngModel)]="note.value" >
 </md-input-container>
-
 </div>
 <div>
   <button md-raised-button (click)=onUpdate(note)>Update</button>

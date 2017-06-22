@@ -13,26 +13,28 @@ export class NotesContainerComponent implements OnInit {
 
   notes: Observable<any>;
   id=0;
-  isedit:boolean=false;
+
   noteedit= {};
 
 
   onNoteChecked(i : number){
     this.store.dispatch({ type: DELETE_NOTE, payload: i });
   }
-  onCreateNote(note){
-    this.store.dispatch({ type: ADD_NOTE, payload: {title: note.title, value: note.value, id: ++this.id}   } );
+  onCreateNote(note,i){
+    this.getlastid();
+    this.store.dispatch({ type: ADD_NOTE, payload: {title: note.title, value: note.value, id: this.id++}   } );
   }
 
-  onedit(note){
-    this.isedit=!this.isedit
-    this.noteedit=note
-    console.log(this.noteedit)
-
-  }
   constructor(private store: Store<any>) {}
 
-
+  getlastid(){
+      this.notes.forEach((items)=>{
+         items.forEach(item =>{
+           if(item.id>=this.id)
+            this.id=item.id+1
+         })
+      })
+  }
 
   ngOnInit() {
     this.notes = this.store.select('notesReducer');
