@@ -20,7 +20,7 @@ export class NotesContainerComponent implements OnInit {
   onNoteChecked(i : number){
     this.store.dispatch({ type: DELETE_NOTE, payload: i });
   }
-  onCreateNote(note,i){
+  onCreateNote(note){
     this.getlastid();
     this.store.dispatch({ type: ADD_NOTE, payload: {title: note.title, value: note.value, id: this.id++}   } );
   }

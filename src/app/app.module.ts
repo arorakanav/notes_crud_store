@@ -15,6 +15,7 @@ import { NoteCardComponent } from './note-card/note-card.component';
 import { NotesContainerComponent } from './notes-container/notes-container.component';
 import { NoteCreatorComponent } from './note-creator/note-creator.component';
 import { notesReducer } from './state-management/reducers/notes.reducer'
+import {  checkReducer } from "./state-management/reducers/check.reducer";
 import {routes} from './routes.routing';
 import { NotesUpdaterComponent } from './notes-updater/notes-updater.component';
 
@@ -40,7 +41,7 @@ import { NotesUpdaterComponent } from './notes-updater/notes-updater.component';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    StoreModule.provideStore({notesReducer}),
+    StoreModule.provideStore({notesReducer,checkReducer}),
     HttpModule,
     routes,
     FlexLayoutModule

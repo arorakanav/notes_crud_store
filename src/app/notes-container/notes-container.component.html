@@ -1,11 +1,10 @@
 <div class="notes">
       <div class="creator">
         <app-note-creator (createNote)="onCreateNote($event)">
-
         </app-note-creator>
       </div>
       <div class="notes">
-        <div class="" *ngIf="!isedit">
+        <div class="">
           <app-note-card
             [note]="note"
             *ngFor="let note of notes | async; let i = index"

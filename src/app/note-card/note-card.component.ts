@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 
-import {SHOW_CHECK,REMOVE_CHECK} from '../state-management/reducers/notes.reducer'
+import {SHOW_CHECK,HIDE_CHECK} from '../state-management/reducers/check.reducer'
 
 @Component({
   selector: 'app-note-card',
@@ -17,10 +17,16 @@ export class NoteCardComponent implements OnInit {
 
   constructor(private store: Store<any>,private router: Router) { }
 
-  showCheck: boolean=false;
+  showCheck: Observable<boolean>;
 
-  toggleCheck(){
-    this.showCheck=!this.showCheck;
+
+  toggleCheck(st){
+    if(!st)
+    {
+      this.store.dispatch({type: HIDE_CHECK})
+    }
+    else
+    this.store.dispatch({type: SHOW_CHECK})
   }
 
   onUpdate(id){
@@ -32,7 +38,7 @@ export class NoteCardComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.showCheck = this.store.select('checkReducer');
   }
 
 }

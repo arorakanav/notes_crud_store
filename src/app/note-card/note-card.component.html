@@ -1,6 +1,6 @@
-<div class="card" (mouseleave)="toggleCheck()" (mouseenter)="toggleCheck()"(click)="onUpdate(note.id)">
+<div class="card" (mouseleave)="toggleCheck(false)" (mouseenter)="toggleCheck(true)"(click)="onUpdate(note.id)">
 <div class="icon-div">
-  <button md-mini-fab class="icon-button" (click)="onChecked()" *ngIf="showCheck" ><md-icon class="icon" >check</md-icon></button>
+  <button md-mini-fab class="icon-button" (click)="onChecked()" *ngIf="showCheck | async" ><md-icon class="icon" >check</md-icon></button>
 </div>
 
 <div>
